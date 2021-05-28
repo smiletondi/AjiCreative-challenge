@@ -1,8 +1,9 @@
 // #region Global Imports
 import * as React from "react";
-
 // import { useSelector, useDispatch } from "react-redux";
 import { Button, Container, Form } from "react-bootstrap"; // #endregion Global Imports
+
+import { LogoBanner } from "@Components";
 
 // #region Interface Imports
 import { IPassword } from "./Password";
@@ -25,12 +26,13 @@ export const Password: React.FunctionComponent<IPassword.IProps> = () =>
 
         return (
             <Container className="p-5">
+                <LogoBanner />
                 <Container className="p-0 m-0 mb-2">
                     <StlyedIcon
                         {...{
                             src: arrowLeftSolidIcon,
                             alt: "Retour arrière",
-                            className: "mr-2"
+                            className: "mr-2",
                         }}
                     />
                     <span className="text-muted">khaled@gmail.com</span>

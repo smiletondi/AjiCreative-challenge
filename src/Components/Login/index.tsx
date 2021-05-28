@@ -3,8 +3,9 @@
 // import { LoginActions } from "@Actions";
 // #endregion Local Imports
 import * as React from "react";
-
 import { Button, Container, Form } from "react-bootstrap";
+
+import { LogoBanner } from "@Components";
 
 // #region Interface Imports
 import { ILogin } from "./Login";
@@ -23,6 +24,7 @@ export const Login: React.FunctionComponent<ILogin.IProps> = () =>
 
         return (
             <Container className="p-5">
+                <LogoBanner />
                 <h3 {...{ className: "p-0 pb-4" }}>Connexion</h3>
                 <Form>
                     <Form.Group controlId="formBasicEmail">

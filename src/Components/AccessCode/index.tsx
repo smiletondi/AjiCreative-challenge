@@ -1,13 +1,13 @@
 // #region Global Imports
 import * as React from "react";
-
 // import { useSelector, useDispatch } from "react-redux";
 import { Button, Container, Form } from "react-bootstrap";
 
+// #endregion Global Imports
+import { LogoBanner } from "@Components";
+
 // #region Interface Imports
 import { IAccessCode } from "./AccessCode";
-
-// #endregion Global Imports
 
 // #region Local Imports
 // import { IStore } from "@Redux/IStore";
@@ -25,6 +25,7 @@ export const AccessCode: React.FunctionComponent<IAccessCode.IProps> = () =>
 
         return (
             <Container className="p-5">
+                <LogoBanner />
                 <h3 {...{ className: "p-0 pb-4" }}>Code d&apos;accès</h3>
                 <Form>
                     <Form.Group controlId="formBasicEmail">

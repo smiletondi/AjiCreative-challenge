@@ -1,20 +1,19 @@
+// import { IStore } from "@Redux/IStore";
+import { NextPage } from "next";
 // #region Global Imports
 import * as React from "react";
 
+import { HomeActions } from "@Actions";
+import { Password } from "@Components";
 // import { Button, Container, Form } from "react-bootstrap";
 // import { Heading, LocaleButton } from "@Components";
 // #region Interface Imports
 import { IHomePage, ReduxNextPageContext } from "@Interfaces";
-
-import { HomeActions } from "@Actions";
-// import { IStore } from "@Redux/IStore";
-import { NextPage } from "next";
-// import { Login } from "@Components/Login";
-// import { AccessCode } from "@Components/AccessCode";
-import { Password } from "@Components/Password";
-import { Wrapper } from "@Styled/Home";
 // #region Local Imports
 import { withTranslation } from "@Server/i18n";
+// import { Login } from "@Components/Login";
+// import { AccessCode } from "@Components/AccessCode";
+import { Wrapper } from "@Styled/Home";
 
 // import { useDispatch, useSelector } from "react-redux";
 
