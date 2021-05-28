@@ -23,7 +23,7 @@ export const Login: React.FunctionComponent<ILogin.IProps> = () =>
         // const dispatch = useDispatch();
 
         return (
-            <Container className="p-5">
+            <Container className="p-3">
                 <LogoBanner />
                 <h3 {...{ className: "p-0 pb-4" }}>Connexion</h3>
                 <Form>
@@ -37,8 +37,12 @@ export const Login: React.FunctionComponent<ILogin.IProps> = () =>
                         />
                     </Form.Group>
                     <Form.Text id="passwordHelpBlock" className="pb-3">
-                        Vous n&apos;avez pas encore de compte ?
-                        <span className="text-primary"> Créez-en un.</span>
+                        <span className="text-nowrap">
+                            Vous n&apos;avez pas encore de compte ?
+                        </span>{" "}
+                        <span className="text-primary text-nowrap">
+                            Créez-en un.
+                        </span>
                     </Form.Text>
                     <Button
                         {...{
