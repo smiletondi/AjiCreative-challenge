@@ -2,18 +2,17 @@
 import { NextPage } from "next";
 // #region Global Imports
 import * as React from "react";
+import { Card } from "react-bootstrap";
 
 import { HomeActions } from "@Actions";
-import { Password } from "@Components";
-// import { Button, Container, Form } from "react-bootstrap";
+import { Layout, Login } from "@Components";
 // import { Heading, LocaleButton } from "@Components";
 // #region Interface Imports
 import { IHomePage, ReduxNextPageContext } from "@Interfaces";
 // #region Local Imports
 import { withTranslation } from "@Server/i18n";
-// import { Login } from "@Components/Login";
-// import { AccessCode } from "@Components/AccessCode";
-import { Wrapper } from "@Styled/Home";
+
+// import { Wrapper } from "@Styled/Home";
 
 // import { useDispatch, useSelector } from "react-redux";
 
@@ -44,11 +43,13 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
     //     ));
 
     return (
-        <Wrapper className="bg-light">
-            {/* <Login /> */}
-            {/* <AccessCode /> */}
-            <Password />
-        </Wrapper>
+        <Layout>
+            <Card className="m-2">
+                {/* <AccessCode /> */}
+                <Login />
+                {/* <Password /> */}
+            </Card>
+        </Layout>
     );
 };
 
