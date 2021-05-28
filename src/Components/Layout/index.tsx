@@ -11,7 +11,7 @@ const Layout: React.FunctionComponent<LayoutProps> = ({
         <Container
             {...{
                 className:
-                    "d-flex justify-content-center align-items-center p-0 m-0",
+                    "d-flex justify-content-center align-items-center p-0",
             }}
         >
             <Wrapper className="bg-secondary px-2">{children}</Wrapper>
