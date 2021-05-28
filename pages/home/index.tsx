@@ -6,11 +6,12 @@ import * as React from "react";
 // #region Interface Imports
 import { IHomePage, ReduxNextPageContext } from "@Interfaces";
 
-// import { Login } from "@Components/Login";
-import { AccessCode } from "@Components/AccessCode";
 import { HomeActions } from "@Actions";
 // import { IStore } from "@Redux/IStore";
 import { NextPage } from "next";
+// import { Login } from "@Components/Login";
+// import { AccessCode } from "@Components/AccessCode";
+import { Password } from "@Components/Password";
 import { Wrapper } from "@Styled/Home";
 // #region Local Imports
 import { withTranslation } from "@Server/i18n";
@@ -46,7 +47,8 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
     return (
         <Wrapper className="bg-light">
             {/* <Login /> */}
-            <AccessCode />
+            {/* <AccessCode /> */}
+            <Password />
         </Wrapper>
     );
 };

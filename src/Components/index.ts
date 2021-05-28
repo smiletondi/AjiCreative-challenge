@@ -5,3 +5,4 @@ export { Heading } from "@Components/Heading";
 export { LocaleButton } from "@Components/LocaleButton";
 export { Login } from "@Components/Login";
 export { AccessCode } from "@Components/AccessCode";
+export { Password } from "@Components/Password";
