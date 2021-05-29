@@ -76,7 +76,7 @@ export const Password: React.FunctionComponent<IPassword.IProps> = () =>
                             className: "float-right",
                         }}
                     >
-                        Suivant
+                        Se connecter
                     </Button>
                 </Form>
             </Container>

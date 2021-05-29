@@ -1,14 +1,14 @@
-// #region Global Imports
-import { Dispatch } from "redux";
-// #endregion Global Imports
-
 // #region Local Imports
 import { ActionConsts } from "@Definitions";
-import { PlanetaryService } from "@Services";
-// #endregion Local Imports
-
+// #region Global Imports
+import { Dispatch } from "redux";
 // #region Interface Imports
 import { IHomePage } from "@Interfaces";
+import { PlanetaryService } from "@Services";
+// #endregion Global Imports
+
+// #endregion Local Imports
+
 // #endregion Interface Imports
 
 export const HomeActions = {
@@ -33,6 +33,14 @@ export const HomeActions = {
                 image: result,
             },
             type: ActionConsts.Home.SetReducer,
+        });
+    },
+    ChangePath: (payload: IHomePage.Actions.IChangePath) => (
+        dispatch: Dispatch
+    ) => {
+        dispatch({
+            payload,
+            type: ActionConsts.Home.ChangePath,
         });
     },
 };

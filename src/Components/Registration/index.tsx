@@ -21,7 +21,7 @@ export const Registration: React.FunctionComponent<IRegistration.IProps> = (
             <LogoBanner />
             <h3 {...{ className: "p-0 pb-4" }}>Inscription</h3>
             <Form {...{ onSubmit: handleSubmit(onSubmit) }}>
-                <Form.Text id="passwordHelpBlock" className="pb-3">
+                <Form.Text className="pb-3">
                     Nous avons besoin de quelques informations supplémentaires
                     pour creer votre compte
                 </Form.Text>

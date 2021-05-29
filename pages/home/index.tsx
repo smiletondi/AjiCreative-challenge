@@ -23,14 +23,14 @@ import { withTranslation } from "@Server/i18n";
 
 // #endregion Interface Imports
 
-const componentSwitch = (choice: string = "registration") =>
+const componentSwitch = (path: string = "login") =>
     ({
         login: <Login />,
         accessCode: <AccessCode />,
         registration: <Registration />,
         password: <Password />,
         feed: <Login />,
-    }[choice]);
+    }[path]);
 
 const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
     // eslint-disable-next-line no-empty-pattern
@@ -39,11 +39,11 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
         // i18n,
     }
 ) => {
-    const home = useSelector((state: IStore) => state?.home);
-    console.log("🚀 ~ file: index.tsx ~ line 43 ~ home", home);
+    const currentPath = useSelector((state: IStore) => state?.home?.path);
+    // const home = useSelector((state: IStore) => state?.home);
     // const dispatch = useDispatch();
     const activeComponent = "login";
-    const currentComponent = componentSwitch();
+    const currentComponent = componentSwitch(currentPath);
 
     // const renderLocaleButtons = (activeLanguage: string) =>
     //     ["en", "es", "tr"].map(lang => (

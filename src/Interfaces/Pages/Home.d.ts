@@ -1,6 +1,5 @@
-// #region Global Imports
 import { WithTranslation } from "next-i18next";
-// #endregion Global Imports
+import path from "path";
 
 declare namespace IHomePage {
     export interface IProps extends WithTranslation {}
@@ -22,15 +21,27 @@ declare namespace IHomePage {
             email: string;
             password: string;
         };
+        path: string;
     }
 
     namespace Actions {
-        export interface IMapPayload {}
+        export interface IMapPayload {
+            user?: {
+                firstName: string;
+                name: string;
+                email: string;
+                password: string;
+            };
+            path?: string;
+        }
 
         export interface IMapResponse {}
 
         export interface IGetApodPayload extends PlanetaryModel.GetApodPayload {
             params: {};
+        }
+        export interface IChangePath {
+            path: string;
         }
 
         export interface IGetApodResponse
