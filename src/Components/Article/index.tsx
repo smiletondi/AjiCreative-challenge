@@ -8,7 +8,6 @@ export const Article: React.FunctionComponent<IArticle.IProps> = (
     props: IArticle.IProps
 ) => {
     const { content } = props;
-    // console.log("🚀 ~ file: index.tsx ~ line 11 ~ content", content);
     return (
         <Container {...{ className: "m-0 my-2" }}>
             <StyledCard>

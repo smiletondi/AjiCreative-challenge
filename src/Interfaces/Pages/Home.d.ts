@@ -9,12 +9,6 @@ declare namespace IHomePage {
     }
 
     export interface IStateProps {
-        home: {
-            version: number;
-        };
-        image: {
-            url: string;
-        };
         user: {
             firstName: string;
             name: string;
@@ -22,10 +16,6 @@ declare namespace IHomePage {
             password: string;
         };
         path: string;
-        errors: {
-            email: boolean;
-            password: boolean;
-        };
     }
     export interface UserFields {
         firstName: string;
@@ -43,10 +33,6 @@ declare namespace IHomePage {
                 password: string;
             };
             path?: string;
-            errors: {
-                email: boolean;
-                password: boolean;
-            };
         }
 
         export interface IMapResponse {}

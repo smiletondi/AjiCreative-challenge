@@ -5,12 +5,6 @@ import { ActionConsts } from "@Definitions";
 import produce from "immer";
 
 const INITIAL_STATE: IHomePage.IStateProps = {
-    home: {
-        version: 1,
-    },
-    image: {
-        url: "",
-    },
     user: {
         firstName: "",
         name: "",
@@ -18,10 +12,6 @@ const INITIAL_STATE: IHomePage.IStateProps = {
         password: "",
     },
     path: "login",
-    errors: {
-        email: false,
-        password: false,
-    },
 };
 
 type IMapPayload = IHomePage.Actions.IMapPayload;
