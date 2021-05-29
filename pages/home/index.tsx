@@ -39,7 +39,7 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
         // i18n,
     }
 ) => {
-    const home = useSelector((state: IStore) => state);
+    const home = useSelector((state: IStore) => state?.home);
     console.log("🚀 ~ file: index.tsx ~ line 43 ~ home", home);
     // const dispatch = useDispatch();
     const activeComponent = "login";

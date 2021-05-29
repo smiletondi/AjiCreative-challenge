@@ -1,14 +1,20 @@
-// #region Local Imports
 import { ActionConsts } from "@Definitions";
-// #endregion Local Imports
+import { Dispatch } from "redux";
 
 export const RegistrationActions = {
     Map: (payload: any) => ({
-            payload,
-            type: ActionConsts.Registration.SetReducer
+        payload,
+        type: ActionConsts.Registration.SetReducer,
     }),
 
     Reset: () => ({
-        type: ActionConsts.Registration.ResetReducer
-    })
+        type: ActionConsts.Registration.ResetReducer,
+    }),
+
+    SaveUserDetails: (payload: any) => async (dispatch: Dispatch) => {
+        dispatch({
+            payload,
+            type: ActionConsts.Registration.SetReducer,
+        });
+    },
 };
