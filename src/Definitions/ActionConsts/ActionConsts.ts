@@ -1,4 +1,9 @@
 export const ActionConsts = {
+    Registration: {
+        ResetReducer: "Registration_ResetReducer",
+        SetReducer: "Registration_SetReducer"
+    },
+
     Password: {
         ResetReducer: "Password_ResetReducer",
         SetReducer: "Password_SetReducer"

@@ -1,7 +1,7 @@
 // #region Global Imports
 import * as React from "react";
 
-import { AccessCode, Layout, Login, Password } from "@Components";
+import { AccessCode, Layout, Login, Password, Registration } from "@Components";
 // import { Heading, LocaleButton } from "@Components";
 // #region Interface Imports
 import { IHomePage, ReduxNextPageContext } from "@Interfaces";
@@ -22,11 +22,11 @@ import { withTranslation } from "@Server/i18n";
 
 // #endregion Interface Imports
 
-const componentSwitch = (choice: string = "password") =>
+const componentSwitch = (choice: string = "registration") =>
     ({
         login: <Login />,
         accessCode: <AccessCode />,
-        registration: <Login />,
+        registration: <Registration />,
         password: <Password />,
         feed: <Login />,
     }[choice]);
