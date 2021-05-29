@@ -19,7 +19,6 @@ export const Password: React.FunctionComponent<IPassword.IProps> = () =>
         const userEmail = useSelector(
             (state: IStore) => state?.home?.user?.email
         );
-        // console.log("🚀 ~ file: index.tsx ~ line 29 ~ userEmail", userEmail);
         const dispatch = useDispatch();
         const { handleSubmit, control } = useForm();
         const onSubmit = (

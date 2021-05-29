@@ -44,20 +44,6 @@ export const HomeReducer = (
             return produce(state, draftState => {
                 draftState.path = action?.payload?.path!;
             });
-        case ActionConsts.Home.UpdateUserDetails:
-            return produce(state, draftState => {
-                draftState.user = action?.payload?.user!;
-            });
-        case ActionConsts.Home.SetErrors:
-            return produce(state, draftState => {
-                const newErrors = action?.payload?.errors!;
-                if ("email" in newErrors) {
-                    draftState.errors.email = action?.payload?.errors?.email!;
-                }
-                if ("password" in newErrors) {
-                    draftState.errors.password = action?.payload?.errors?.password!;
-                }
-            });
         case ActionConsts.Home.ValidateRegistration:
             return produce(state, draftState => {
                 const { payload } = action;
@@ -73,10 +59,6 @@ export const HomeReducer = (
             });
         case ActionConsts.Home.ValidatePassword:
             return produce(state, draftState => {
-                console.log(
-                    "🚀 ~ file: index.ts ~ line 76 ~ draftState",
-                    draftState
-                );
                 const { payload } = action;
                 if ("password" in payload?.user!) {
                     draftState.user.password = payload?.user?.password!;
