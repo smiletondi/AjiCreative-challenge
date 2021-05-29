@@ -46,8 +46,8 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
         // i18n,
     }
 ) => {
-    // const currentPath = useSelector((state: IStore) => state?.home?.path);
-    const currentPath = "feed";
+    const currentPath = useSelector((state: IStore) => state?.home?.path);
+    // const currentPath = "feed";
     // const home = useSelector((state: IStore) => state?.home);
     // const dispatch = useDispatch();
     // const activeComponent = "login";
@@ -66,7 +66,6 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
         return (
             <Layout>
                 <>{currentComponent}</>
-                {/* <React.Fragment>{currentComponent}</React.Fragment> */}
             </Layout>
         );
     }

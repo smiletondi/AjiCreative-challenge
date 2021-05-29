@@ -4,6 +4,7 @@ const withBundleAnalyzer = require("@next/bundle-analyzer");
 const nextConfig = {
   analyzeServer: ["server", "both"].includes(process.env.BUNDLE_ANALYZE),
   analyzeBrowser: ["browser", "both"].includes(process.env.BUNDLE_ANALYZE),
+  analyzeBrowser: ["browser", "both"].includes(process.env.NEWS_API_KEY),
   bundleAnalyzerConfig: {
     server: {
       analyzerMode: "static",
