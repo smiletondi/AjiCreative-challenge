@@ -6,11 +6,11 @@ import { AccessCode, Layout, Login, Password, Registration } from "@Components";
 // import { Heading, LocaleButton } from "@Components";
 // #region Interface Imports
 import { IHomePage, ReduxNextPageContext } from "@Interfaces";
+import { useDispatch, useSelector } from "react-redux";
 
-// import { useDispatch, useSelector } from "react-redux";
 import { Card } from "react-bootstrap";
 import { HomeActions } from "@Actions";
-// import { IStore } from "@Redux/IStore";
+import { IStore } from "@Redux/IStore";
 import { NextPage } from "next";
 // #region Local Imports
 import { withTranslation } from "@Server/i18n";
@@ -39,7 +39,8 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
         // i18n,
     }
 ) => {
-    // const home = useSelector((state: IStore) => state.home);
+    const home = useSelector((state: IStore) => state);
+    console.log("🚀 ~ file: index.tsx ~ line 43 ~ home", home);
     // const dispatch = useDispatch();
     const activeComponent = "login";
     const currentComponent = componentSwitch();

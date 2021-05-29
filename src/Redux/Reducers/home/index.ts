@@ -1,9 +1,10 @@
+// #region Interface Imports
+import { IAction, IHomePage } from "@Interfaces";
+
 // #region Local Imports
 import { ActionConsts } from "@Definitions";
 // #endregion Local Imports
 
-// #region Interface Imports
-import { IAction, IHomePage } from "@Interfaces";
 // #endregion Interface Imports
 
 const INITIAL_STATE: IHomePage.IStateProps = {
