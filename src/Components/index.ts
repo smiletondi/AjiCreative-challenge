@@ -4,3 +4,4 @@ export { AccessCode } from "@Components/AccessCode";
 export { Password } from "@Components/Password";
 export { LogoBanner } from "@Components/LogoBanner";
 export { Registration } from "@Components/Registration";
+export { Feed } from "@Components/Feed";

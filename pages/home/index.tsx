@@ -2,7 +2,14 @@
 // #region Global Imports
 import * as React from "react";
 
-import { AccessCode, Layout, Login, Password, Registration } from "@Components";
+import {
+    AccessCode,
+    Feed,
+    Layout,
+    Login,
+    Password,
+    Registration,
+} from "@Components";
 // import { Heading, LocaleButton } from "@Components";
 // #region Interface Imports
 import { IHomePage, ReduxNextPageContext } from "@Interfaces";
@@ -29,7 +36,7 @@ const componentSwitch = (path: string = "login") =>
         accessCode: <AccessCode />,
         registration: <Registration />,
         password: <Password />,
-        feed: <Login />,
+        feed: <Feed />,
     }[path]);
 
 const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
