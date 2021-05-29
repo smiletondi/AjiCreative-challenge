@@ -1,26 +1,35 @@
-// import { IStore } from "@Redux/IStore";
-import { NextPage } from "next";
 // #region Global Imports
 import * as React from "react";
-import { Card } from "react-bootstrap";
 
-import { HomeActions } from "@Actions";
-import { Layout, Login } from "@Components";
+import { AccessCode, Layout, Login, Password } from "@Components";
 // import { Heading, LocaleButton } from "@Components";
 // #region Interface Imports
 import { IHomePage, ReduxNextPageContext } from "@Interfaces";
+
+// import { useDispatch, useSelector } from "react-redux";
+import { Card } from "react-bootstrap";
+import { HomeActions } from "@Actions";
+// import { IStore } from "@Redux/IStore";
+import { NextPage } from "next";
 // #region Local Imports
 import { withTranslation } from "@Server/i18n";
 
 // import { Wrapper } from "@Styled/Home";
-
-// import { useDispatch, useSelector } from "react-redux";
 
 // #endregion Global Imports
 
 // #endregion Local Imports
 
 // #endregion Interface Imports
+
+const componentSwitch = (choice: string = "password") =>
+    ({
+        login: <Login />,
+        accessCode: <AccessCode />,
+        registration: <Login />,
+        password: <Password />,
+        feed: <Login />,
+    }[choice]);
 
 const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
     // eslint-disable-next-line no-empty-pattern
@@ -31,6 +40,8 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
 ) => {
     // const home = useSelector((state: IStore) => state.home);
     // const dispatch = useDispatch();
+    const activeComponent = "login";
+    const currentComponent = componentSwitch();
 
     // const renderLocaleButtons = (activeLanguage: string) =>
     //     ["en", "es", "tr"].map(lang => (
@@ -46,8 +57,9 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
         <Layout>
             <Card className="m-2">
                 {/* <AccessCode /> */}
-                <Login />
+                {/* <Login /> */}
                 {/* <Password /> */}
+                {currentComponent}
             </Card>
         </Layout>
     );
