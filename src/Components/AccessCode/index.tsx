@@ -1,34 +1,41 @@
-import * as React from "react";
-
+/* eslint-disable import/order */
 // import { useSelector, useDispatch } from "react-redux";
-import { Button, Container, Form } from "react-bootstrap";
+import { Alert, Button, Container, Form, InputGroup } from "react-bootstrap";
 import { Controller, useForm } from "react-hook-form";
+import { IAccessCode, IForm } from "./AccessCode";
+import React, { useEffect, useState } from "react";
 
-import { IAccessCode } from "./AccessCode";
+import { HomeActions } from "@Actions";
 import { LogoBanner } from "@Components";
+import { useDispatch } from "react-redux";
 
-// #region Local Imports
-// import { IStore } from "@Redux/IStore";
-// import { AccessCodeActions } from "@Actions";
-
-// #endregion Local Imports
-
-// #endregion Interface Imports
+const ADMIN_CODE = "123456789";
 
 export const AccessCode: React.FunctionComponent<IAccessCode.IProps> = () =>
     // props: IAccessCode.IProps
     {
         // const accessCode = useSelector((state: IStore) => state.accessCode);
-        // const dispatch = useDispatch();
+        const dispatch = useDispatch();
         const { handleSubmit, control } = useForm();
+        const [accessCodeHasErrors, setAccessCodeHasErrors] = useState(false);
+        useEffect(() => {
+            return () => {
+                setAccessCodeHasErrors(false);
+            };
+        }, []);
         const onSubmit = (
-            data: any,
+            data: IForm,
             e: React.BaseSyntheticEvent<object, any, any>
         ) => {
             e?.preventDefault();
-            console.log(
-                "🚀 ~ file: index.tsx ~ line 29 ~ onSubmit ~ data",
-                data
+            if (ADMIN_CODE !== data?.accessCode) {
+                return setAccessCodeHasErrors(true);
+            }
+            setAccessCodeHasErrors(false);
+            dispatch(
+                HomeActions.ChangePath({
+                    path: "registration",
+                })
             );
         };
 
@@ -39,21 +46,29 @@ export const AccessCode: React.FunctionComponent<IAccessCode.IProps> = () =>
                 <Form {...{ onSubmit: handleSubmit(onSubmit) }}>
                     <Form.Group>
                         <Form.Label>Code</Form.Label>
-                        <Controller
-                            name="password"
-                            control={control}
-                            defaultValue=""
-                            render={({ field }) => (
-                                <Form.Control
-                                    {...{
-                                        ...field,
-                                        type: "text",
-                                        placeholder:
-                                            "Code d'accès communiqué par votre admin",
-                                    }}
-                                />
-                            )}
-                        />
+                        <InputGroup hasValidation>
+                            <Controller
+                                name="accessCode"
+                                control={control}
+                                defaultValue=""
+                                render={({ field }) => (
+                                    <Form.Control
+                                        {...{
+                                            ...field,
+                                            type: "text",
+                                            isInvalid: accessCodeHasErrors,
+                                            placeholder:
+                                                "Code d'accès communiqué par votre admin",
+                                        }}
+                                    />
+                                )}
+                            />
+                            {accessCodeHasErrors ? (
+                                <Alert variant="danger" className="w-100 mt-2">
+                                    <small>Code d'accès incorrecte</small>
+                                </Alert>
+                            ) : null}
+                        </InputGroup>
                     </Form.Group>
                     <Button
                         {...{

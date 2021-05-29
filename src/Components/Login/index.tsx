@@ -76,7 +76,7 @@ export const Login: React.FunctionComponent<ILogin.IProps> = () =>
                                 )}
                             />
                             {emailHasErrors ? (
-                                <Alert variant="danger" className="mt-2">
+                                <Alert variant="danger" className="w-100 mt-2">
                                     <small>
                                         Aucun utilisateur enregistré avec cette
                                         adresse e-mail
