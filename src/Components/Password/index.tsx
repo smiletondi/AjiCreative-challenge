@@ -1,39 +1,43 @@
 /* eslint-disable import/order */
-// #region Global Imports
 import * as React from "react";
 
-// import { useSelector, useDispatch } from "react-redux";
 import { Button, Container, Form } from "react-bootstrap"; // #endregion Global Imports
 import { Controller, useForm } from "react-hook-form";
+import { useDispatch, useSelector } from "react-redux";
 
+import { HomeActions } from "@Actions";
 import { IPassword } from "./Password";
-// #region Interface Imports
+import { IStore } from "@Redux/IStore";
 import { LogoBanner } from "@Components";
-// #region Local Imports
 import { StlyedIcon } from "./styled";
 
 const arrowLeftSolidIcon = "/images/arrow-left-solid.svg";
 
-// import { IStore } from "@Redux/IStore";
-// import { PasswordActions } from "@Actions";
-// #endregion Local Imports
-
-// #endregion Interface Imports
-
 export const Password: React.FunctionComponent<IPassword.IProps> = () =>
     // props: IPassword.IProps
     {
-        // const password = useSelector((state: IStore) => state.password);
-        // const dispatch = useDispatch();
+        const userEmail = useSelector(
+            (state: IStore) => state?.home?.user?.email
+        );
+        // console.log("🚀 ~ file: index.tsx ~ line 29 ~ userEmail", userEmail);
+        const dispatch = useDispatch();
         const { handleSubmit, control } = useForm();
         const onSubmit = (
-            data: any,
-            e: React.BaseSyntheticEvent<object, any, any>
+            data: IPassword.IForm,
+            e: React.BaseSyntheticEvent
         ) => {
             e?.preventDefault();
-            console.log(
-                "🚀 ~ file: index.tsx ~ line 29 ~ onSubmit ~ data",
-                data
+            dispatch(
+                HomeActions.ValidatePassword({
+                    ...data,
+                })
+            );
+        };
+        const checkPreviousPath = () => {
+            dispatch(
+                HomeActions.ChangePath({
+                    path: "registration",
+                })
             );
         };
 
@@ -46,9 +50,10 @@ export const Password: React.FunctionComponent<IPassword.IProps> = () =>
                             src: arrowLeftSolidIcon,
                             alt: "Retour arrière",
                             className: "mr-2",
+                            onClick: checkPreviousPath,
                         }}
                     />
-                    <span className="text-muted">khaled@gmail.com</span>
+                    <span className="text-muted">{userEmail}</span>
                 </Container>
                 <h3 {...{ className: "p-0 pb-4" }}>Entrez le mot de passe</h3>
                 <Form {...{ onSubmit: handleSubmit(onSubmit) }}>
@@ -65,6 +70,7 @@ export const Password: React.FunctionComponent<IPassword.IProps> = () =>
                                         type: "password",
                                         placeholder: "Mot de passe",
                                     }}
+                                    required
                                 />
                             )}
                         />

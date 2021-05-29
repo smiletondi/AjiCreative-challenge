@@ -27,6 +27,12 @@ declare namespace IHomePage {
             password: boolean;
         };
     }
+    export interface UserFields {
+        firstName: string;
+        name: string;
+        email: string;
+        password: string;
+    }
 
     namespace Actions {
         export interface IMapPayload {
@@ -55,6 +61,14 @@ declare namespace IHomePage {
             firstName: string;
             name: string;
             email: string;
+            password: string;
+        }
+        export interface IValidateRegistration {
+            firstName: string;
+            name: string;
+            email: string;
+        }
+        export interface IValidatePassword {
             password: string;
         }
         export interface IValidateEmail {

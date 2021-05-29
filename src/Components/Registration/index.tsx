@@ -3,17 +3,29 @@
 import { Button, Container, Form } from "react-bootstrap";
 import { Controller, useForm } from "react-hook-form";
 import React, { BaseSyntheticEvent } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
+import { HomeActions } from "@Actions";
+import { IHomePage } from "@Interfaces";
 import { IRegistration } from "./Registration";
+import { IStore } from "@Redux/IStore";
 import { LogoBanner } from "@Components";
 
 export const Registration: React.FunctionComponent<IRegistration.IProps> = (
     props: IRegistration.IProps
 ) => {
+    const existingUser: IHomePage.UserFields = useSelector(
+        (state: IStore) => state?.home?.user
+    );
     const { handleSubmit, control } = useForm();
-    const onSubmit = (data: any, e: BaseSyntheticEvent<object, any, any>) => {
+    const dispatch = useDispatch();
+    const onSubmit = (data: IRegistration.IForm, e: BaseSyntheticEvent) => {
         e?.preventDefault();
-        console.log("🚀 ~ file: index.tsx ~ line 29 ~ onSubmit ~ data", data);
+        dispatch(
+            HomeActions.ValidateRegistration({
+                ...data,
+            })
+        );
     };
 
     return (
@@ -28,18 +40,21 @@ export const Registration: React.FunctionComponent<IRegistration.IProps> = (
                 <Form.Group>
                     <Form.Label>Nom</Form.Label>
                     <Controller
-                        name="name"
-                        control={control}
-                        defaultValue=""
-                        render={({ field }) => (
-                            <Form.Control
-                                {...{
-                                    ...field,
-                                    type: "text",
-                                    placeholder: "Nom",
-                                }}
-                            />
-                        )}
+                        {...{
+                            name: "name",
+                            control,
+                            defaultValue: existingUser?.name || "",
+                            render: ({ field }) => (
+                                <Form.Control
+                                    {...{
+                                        ...field,
+                                        type: "text",
+                                        placeholder: "Nom",
+                                    }}
+                                    required
+                                />
+                            ),
+                        }}
                     />
                 </Form.Group>
                 <Form.Group>
@@ -47,7 +62,7 @@ export const Registration: React.FunctionComponent<IRegistration.IProps> = (
                     <Controller
                         name="firstName"
                         control={control}
-                        defaultValue=""
+                        defaultValue={existingUser?.firstName || ""}
                         render={({ field }) => (
                             <Form.Control
                                 {...{
@@ -55,6 +70,7 @@ export const Registration: React.FunctionComponent<IRegistration.IProps> = (
                                     type: "text",
                                     placeholder: "Prenom",
                                 }}
+                                required
                             />
                         )}
                     />
@@ -64,7 +80,7 @@ export const Registration: React.FunctionComponent<IRegistration.IProps> = (
                     <Controller
                         name="email"
                         control={control}
-                        defaultValue=""
+                        defaultValue={existingUser?.email || ""}
                         render={({ field }) => (
                             <Form.Control
                                 {...{
@@ -72,6 +88,7 @@ export const Registration: React.FunctionComponent<IRegistration.IProps> = (
                                     type: "email",
                                     placeholder: "Email",
                                 }}
+                                required
                             />
                         )}
                     />

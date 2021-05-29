@@ -67,6 +67,38 @@ export const HomeActions = {
             type: ActionConsts.Home.ChangePath,
         });
     },
+    ValidateRegistration: (
+        payload: IHomePage.Actions.IValidateRegistration
+    ) => (dispatch: Dispatch) => {
+        dispatch({
+            payload: {
+                user: payload,
+            },
+            type: ActionConsts.Home.UpdateUserDetails,
+        });
+        dispatch({
+            payload: {
+                path: "password",
+            },
+            type: ActionConsts.Home.ChangePath,
+        });
+    },
+    ValidatePassword: (payload: IHomePage.Actions.IValidatePassword) => (
+        dispatch: Dispatch
+    ) => {
+        dispatch({
+            payload: {
+                user: payload,
+            },
+            type: ActionConsts.Home.ValidatePassword,
+        });
+        dispatch({
+            payload: {
+                path: "feed",
+            },
+            type: ActionConsts.Home.ChangePath,
+        });
+    },
     SetErrors: (payload: IHomePage.Actions.ISetErrors) => (
         dispatch: Dispatch
     ) => {

@@ -72,6 +72,7 @@ export const Login: React.FunctionComponent<ILogin.IProps> = () =>
                                             placeholder:
                                                 "Entrer votre adresse e-mail",
                                         }}
+                                        required
                                     />
                                 )}
                             />

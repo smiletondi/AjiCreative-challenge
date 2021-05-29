@@ -7,6 +7,12 @@ export declare module IRegistration {
         email: string;
     }
 
+    export interface IForm {
+        name: string;
+        firstName: string;
+        email: string;
+    }
+
     export interface IStateProps {}
 
     module Actions {

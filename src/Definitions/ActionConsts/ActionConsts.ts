@@ -5,5 +5,7 @@ export const ActionConsts = {
         ChangePath: "Home_ChangePath",
         UpdateUserDetails: "Home_UpdateUserDetails",
         SetErrors: "Home_SetErrors",
+        ValidateRegistration: "Home_ValidateRegistration",
+        ValidatePassword: "Home_ValidatePassword",
     },
 };

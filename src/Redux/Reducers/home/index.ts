@@ -49,7 +49,6 @@ export const HomeReducer = (
                 draftState.user = action?.payload?.user!;
             });
         case ActionConsts.Home.SetErrors:
-            // console.log(action);
             return produce(state, draftState => {
                 const newErrors = action?.payload?.errors!;
                 if ("email" in newErrors) {
@@ -58,7 +57,30 @@ export const HomeReducer = (
                 if ("password" in newErrors) {
                     draftState.errors.password = action?.payload?.errors?.password!;
                 }
-                console.log(draftState.errors);
+            });
+        case ActionConsts.Home.ValidateRegistration:
+            return produce(state, draftState => {
+                const { payload } = action;
+                if ("name" in payload?.user!) {
+                    draftState.user.name = payload?.user.name!;
+                }
+                if ("firstName" in payload?.user!) {
+                    draftState.user.firstName = payload?.user.firstName!;
+                }
+                if ("email" in payload?.user!) {
+                    draftState.user.email = payload?.user.email!;
+                }
+            });
+        case ActionConsts.Home.ValidatePassword:
+            return produce(state, draftState => {
+                console.log(
+                    "🚀 ~ file: index.ts ~ line 76 ~ draftState",
+                    draftState
+                );
+                const { payload } = action;
+                if ("password" in payload?.user!) {
+                    draftState.user.password = payload?.user?.password!;
+                }
             });
 
         default:

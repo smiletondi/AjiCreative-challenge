@@ -2,10 +2,10 @@
 // import { useSelector, useDispatch } from "react-redux";
 import { Alert, Button, Container, Form, InputGroup } from "react-bootstrap";
 import { Controller, useForm } from "react-hook-form";
-import { IAccessCode, IForm } from "./AccessCode";
 import React, { useEffect, useState } from "react";
 
 import { HomeActions } from "@Actions";
+import { IAccessCode } from "./AccessCode";
 import { LogoBanner } from "@Components";
 import { useDispatch } from "react-redux";
 
@@ -24,7 +24,7 @@ export const AccessCode: React.FunctionComponent<IAccessCode.IProps> = () =>
             };
         }, []);
         const onSubmit = (
-            data: IForm,
+            data: IAccessCode.IForm,
             e: React.BaseSyntheticEvent<object, any, any>
         ) => {
             e?.preventDefault();
