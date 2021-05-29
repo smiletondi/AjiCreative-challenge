@@ -1,6 +1,6 @@
 import * as React from "react";
-import { Container } from "react-bootstrap";
 
+import { Container } from "react-bootstrap";
 import { LayoutProps } from "./Layout";
 import { Wrapper } from "./styled";
 

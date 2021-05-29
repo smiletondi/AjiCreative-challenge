@@ -5,3 +5,4 @@ export { Password } from "@Components/Password";
 export { LogoBanner } from "@Components/LogoBanner";
 export { Registration } from "@Components/Registration";
 export { Feed } from "@Components/Feed";
+export { Article } from "@Components/Article";

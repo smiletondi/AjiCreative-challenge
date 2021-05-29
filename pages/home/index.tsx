@@ -46,7 +46,8 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
         // i18n,
     }
 ) => {
-    const currentPath = useSelector((state: IStore) => state?.home?.path);
+    // const currentPath = useSelector((state: IStore) => state?.home?.path);
+    const currentPath = "feed";
     // const home = useSelector((state: IStore) => state?.home);
     // const dispatch = useDispatch();
     // const activeComponent = "login";
@@ -61,15 +62,18 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
     //             onClick={() => i18n.changeLanguage(lang)}
     //         />
     //     ));
+    if (currentPath === "feed") {
+        return (
+            <Layout>
+                <>{currentComponent}</>
+                {/* <React.Fragment>{currentComponent}</React.Fragment> */}
+            </Layout>
+        );
+    }
 
     return (
         <Layout>
-            <Card className="m-2">
-                {/* <AccessCode /> */}
-                {/* <Login /> */}
-                {/* <Password /> */}
-                {currentComponent}
-            </Card>
+            <Card className="m-2">{currentComponent}</Card>
         </Layout>
     );
 };
