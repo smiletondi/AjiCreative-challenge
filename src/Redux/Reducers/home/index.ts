@@ -18,10 +18,13 @@ const INITIAL_STATE: IHomePage.IStateProps = {
         password: "",
     },
     path: "login",
+    errors: {
+        email: false,
+        password: false,
+    },
 };
 
 type IMapPayload = IHomePage.Actions.IMapPayload;
-type IChangePath = IHomePage.Actions.IChangePath;
 
 export const HomeReducer = (
     state = INITIAL_STATE,
@@ -40,6 +43,15 @@ export const HomeReducer = (
         case ActionConsts.Home.ChangePath:
             return produce(state, draftState => {
                 draftState.path = action?.payload?.path!;
+            });
+        case ActionConsts.Home.UpdateUserDetails:
+            return produce(state, draftState => {
+                draftState.user = action?.payload?.user!;
+            });
+        case ActionConsts.Home.SetErrors:
+            console.log(action);
+            return produce(state, draftState => {
+                draftState.errors = action?.payload?.errors!;
             });
 
         default:

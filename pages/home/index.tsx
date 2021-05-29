@@ -49,7 +49,7 @@ const Home: NextPage<IHomePage.IProps, IHomePage.InitialProps> = (
     const currentPath = useSelector((state: IStore) => state?.home?.path);
     // const home = useSelector((state: IStore) => state?.home);
     // const dispatch = useDispatch();
-    const activeComponent = "login";
+    // const activeComponent = "login";
     const currentComponent = componentSwitch(currentPath);
 
     // const renderLocaleButtons = (activeLanguage: string) =>

@@ -22,6 +22,10 @@ declare namespace IHomePage {
             password: string;
         };
         path: string;
+        errors: {
+            email: boolean;
+            password: boolean;
+        };
     }
 
     namespace Actions {
@@ -33,6 +37,10 @@ declare namespace IHomePage {
                 password: string;
             };
             path?: string;
+            errors: {
+                email: boolean;
+                password: boolean;
+            };
         }
 
         export interface IMapResponse {}
@@ -42,6 +50,19 @@ declare namespace IHomePage {
         }
         export interface IChangePath {
             path: string;
+        }
+        export interface IUpdateUserDetails {
+            firstName: string;
+            name: string;
+            email: string;
+            password: string;
+        }
+        export interface IValidateEmail {
+            email: string;
+        }
+        export interface ISetErrors {
+            email?: boolean;
+            password?: boolean;
         }
 
         export interface IGetApodResponse

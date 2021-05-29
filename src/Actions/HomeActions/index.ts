@@ -35,12 +35,45 @@ export const HomeActions = {
             type: ActionConsts.Home.SetReducer,
         });
     },
+
     ChangePath: (payload: IHomePage.Actions.IChangePath) => (
         dispatch: Dispatch
     ) => {
         dispatch({
             payload,
             type: ActionConsts.Home.ChangePath,
+        });
+    },
+
+    UpdateUserDetails: (payload: IHomePage.Actions.IUpdateUserDetails) => (
+        dispatch: Dispatch
+    ) => {
+        dispatch({
+            payload,
+            type: ActionConsts.Home.UpdateUserDetails,
+        });
+    },
+    ValidateEmail: (payload: IHomePage.Actions.IValidateEmail) => (
+        dispatch: Dispatch
+    ) => {
+        dispatch({
+            payload,
+            type: ActionConsts.Home.UpdateUserDetails,
+        });
+        dispatch({
+            payload: {
+                path: "password",
+            },
+            type: ActionConsts.Home.ChangePath,
+        });
+    },
+    SetErrors: (payload: IHomePage.Actions.ISetErrors) => (
+        dispatch: Dispatch
+    ) => {
+        // console.log(payload);
+        dispatch({
+            payload,
+            type: ActionConsts.Home.SetErrors,
         });
     },
 };
