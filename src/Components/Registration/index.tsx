@@ -10,7 +10,7 @@ import { LogoBanner } from "@Components";
 export const Registration: React.FunctionComponent<IRegistration.IProps> = (
     props: IRegistration.IProps
 ) => {
-    const { register, handleSubmit, control } = useForm();
+    const { handleSubmit, control } = useForm();
     const onSubmit = (data: any, e: BaseSyntheticEvent<object, any, any>) => {
         e?.preventDefault();
         console.log("🚀 ~ file: index.tsx ~ line 29 ~ onSubmit ~ data", data);

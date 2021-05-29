@@ -7,6 +7,7 @@
 import * as React from "react";
 
 import { Button, Container, Form } from "react-bootstrap";
+import { Controller, useForm } from "react-hook-form";
 
 // #region Interface Imports
 import { ILogin } from "./Login";
@@ -23,19 +24,40 @@ export const Login: React.FunctionComponent<ILogin.IProps> = () =>
     {
         // const login = useSelector((state: IStore) => state.login);
         // const dispatch = useDispatch();
+        const { handleSubmit, control } = useForm();
+        const onSubmit = (
+            data: any,
+            e: React.BaseSyntheticEvent<object, any, any>
+        ) => {
+            e?.preventDefault();
+            console.log(
+                "🚀 ~ file: index.tsx ~ line 29 ~ onSubmit ~ data",
+                data
+            );
+        };
 
         return (
             <Container className="p-3">
                 <LogoBanner />
                 <h3 {...{ className: "p-0 pb-4" }}>Connexion</h3>
-                <Form>
+                <Form {...{ onSubmit: handleSubmit(onSubmit) }}>
                     <Form.Group controlId="formBasicEmail">
                         <Form.Label>E-mail</Form.Label>
-                        <Form.Control
-                            {...{
-                                type: "email",
-                                placeholder: "Entrer votre adresse e-mail",
-                            }}
+                        <Form.Control {...{}} />
+                        <Controller
+                            name="email"
+                            control={control}
+                            defaultValue=""
+                            render={({ field }) => (
+                                <Form.Control
+                                    {...{
+                                        ...field,
+                                        type: "email",
+                                        placeholder:
+                                            "Entrer votre adresse e-mail",
+                                    }}
+                                />
+                            )}
                         />
                     </Form.Group>
                     <Form.Text id="passwordHelpBlock" className="pb-3">

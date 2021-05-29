@@ -16,6 +16,12 @@ declare namespace IHomePage {
         image: {
             url: string;
         };
+        user: {
+            firstName: string;
+            name: string;
+            email: string;
+            password: string;
+        };
     }
 
     namespace Actions {

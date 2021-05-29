@@ -4,6 +4,7 @@ import * as React from "react";
 
 // import { useSelector, useDispatch } from "react-redux";
 import { Button, Container, Form } from "react-bootstrap"; // #endregion Global Imports
+import { Controller, useForm } from "react-hook-form";
 
 import { IPassword } from "./Password";
 // #region Interface Imports
@@ -24,6 +25,17 @@ export const Password: React.FunctionComponent<IPassword.IProps> = () =>
     {
         // const password = useSelector((state: IStore) => state.password);
         // const dispatch = useDispatch();
+        const { handleSubmit, control } = useForm();
+        const onSubmit = (
+            data: any,
+            e: React.BaseSyntheticEvent<object, any, any>
+        ) => {
+            e?.preventDefault();
+            console.log(
+                "🚀 ~ file: index.tsx ~ line 29 ~ onSubmit ~ data",
+                data
+            );
+        };
 
         return (
             <Container className="p-3">
@@ -39,14 +51,22 @@ export const Password: React.FunctionComponent<IPassword.IProps> = () =>
                     <span className="text-muted">khaled@gmail.com</span>
                 </Container>
                 <h3 {...{ className: "p-0 pb-4" }}>Entrez le mot de passe</h3>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
+                <Form {...{ onSubmit: handleSubmit(onSubmit) }}>
+                    <Form.Group>
                         <Form.Label>Mode de passe</Form.Label>
-                        <Form.Control
-                            {...{
-                                type: "password",
-                                placeholder: "Mot de passe",
-                            }}
+                        <Controller
+                            name="password"
+                            control={control}
+                            defaultValue=""
+                            render={({ field }) => (
+                                <Form.Control
+                                    {...{
+                                        ...field,
+                                        type: "password",
+                                        placeholder: "Mot de passe",
+                                    }}
+                                />
+                            )}
                         />
                     </Form.Group>
                     <Button

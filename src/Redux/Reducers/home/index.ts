@@ -1,11 +1,6 @@
-// #region Interface Imports
 import { IAction, IHomePage } from "@Interfaces";
 
-// #region Local Imports
 import { ActionConsts } from "@Definitions";
-// #endregion Local Imports
-
-// #endregion Interface Imports
 
 const INITIAL_STATE: IHomePage.IStateProps = {
     home: {
@@ -13,6 +8,12 @@ const INITIAL_STATE: IHomePage.IStateProps = {
     },
     image: {
         url: "",
+    },
+    user: {
+        firstName: "",
+        name: "",
+        email: "",
+        password: "",
     },
 };
 

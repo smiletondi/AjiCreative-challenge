@@ -1,12 +1,10 @@
-// #region Global Imports
 import * as React from "react";
 
 // import { useSelector, useDispatch } from "react-redux";
 import { Button, Container, Form } from "react-bootstrap";
+import { Controller, useForm } from "react-hook-form";
 
-// #region Interface Imports
 import { IAccessCode } from "./AccessCode";
-// #endregion Global Imports
 import { LogoBanner } from "@Components";
 
 // #region Local Imports
@@ -22,20 +20,39 @@ export const AccessCode: React.FunctionComponent<IAccessCode.IProps> = () =>
     {
         // const accessCode = useSelector((state: IStore) => state.accessCode);
         // const dispatch = useDispatch();
+        const { handleSubmit, control } = useForm();
+        const onSubmit = (
+            data: any,
+            e: React.BaseSyntheticEvent<object, any, any>
+        ) => {
+            e?.preventDefault();
+            console.log(
+                "🚀 ~ file: index.tsx ~ line 29 ~ onSubmit ~ data",
+                data
+            );
+        };
 
         return (
             <Container className="p-3">
                 <LogoBanner />
                 <h3 {...{ className: "p-0 pb-4" }}>Code d&apos;accès</h3>
-                <Form>
-                    <Form.Group controlId="formBasicEmail">
+                <Form {...{ onSubmit: handleSubmit(onSubmit) }}>
+                    <Form.Group>
                         <Form.Label>Code</Form.Label>
-                        <Form.Control
-                            {...{
-                                type: "email",
-                                placeholder:
-                                    "Code d'accès communiqué par votre admin",
-                            }}
+                        <Controller
+                            name="password"
+                            control={control}
+                            defaultValue=""
+                            render={({ field }) => (
+                                <Form.Control
+                                    {...{
+                                        ...field,
+                                        type: "text",
+                                        placeholder:
+                                            "Code d'accès communiqué par votre admin",
+                                    }}
+                                />
+                            )}
                         />
                     </Form.Group>
                     <Button
