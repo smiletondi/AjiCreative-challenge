@@ -1,29 +1,15 @@
-import { Button, Container, Form } from "react-bootstrap";
-import { Controller, useForm } from "react-hook-form";
 /* eslint-disable import/order */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-// #region Global Imports
+import { Button, Container, Form } from "react-bootstrap";
+import { Controller, useForm } from "react-hook-form";
 import React, { BaseSyntheticEvent } from "react";
-import { useDispatch, useSelector } from "react-redux";
 
-// #region Interface Imports
 import { IRegistration } from "./Registration";
-// #region Local Imports
-import { IStore } from "@Redux/IStore";
 import { LogoBanner } from "@Components";
-import { RegistrationActions } from "@Actions";
-
-// #endregion Local Imports
-
-// #endregion Interface Imports
 
 export const Registration: React.FunctionComponent<IRegistration.IProps> = (
     props: IRegistration.IProps
 ) => {
-    const registration = useSelector((state: IStore) => state.registration);
-    console.log("🚀 ~ file: index.tsx ~ line 24 ~ registration", registration);
-    // const dispatch = useDispatch();
-
     const { register, handleSubmit, control } = useForm();
     const onSubmit = (data: any, e: BaseSyntheticEvent<object, any, any>) => {
         e?.preventDefault();
