@@ -49,9 +49,16 @@ export const HomeReducer = (
                 draftState.user = action?.payload?.user!;
             });
         case ActionConsts.Home.SetErrors:
-            console.log(action);
+            // console.log(action);
             return produce(state, draftState => {
-                draftState.errors = action?.payload?.errors!;
+                const newErrors = action?.payload?.errors!;
+                if ("email" in newErrors) {
+                    draftState.errors.email = action?.payload?.errors?.email!;
+                }
+                if ("password" in newErrors) {
+                    draftState.errors.password = action?.payload?.errors?.password!;
+                }
+                console.log(draftState.errors);
             });
 
         default:

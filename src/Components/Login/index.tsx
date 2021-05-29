@@ -1,8 +1,7 @@
-/* eslint-disable import/order */
-import * as React from "react";
-
-import { Button, Container, Form, InputGroup } from "react-bootstrap";
+import { Alert, Button, Container, Form, InputGroup } from "react-bootstrap";
 import { Controller, useForm } from "react-hook-form";
+/* eslint-disable import/order */
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 
 import { HomeActions } from "@Actions";
@@ -16,15 +15,14 @@ export const Login: React.FunctionComponent<ILogin.IProps> = () =>
     // props: ILogin.IProps
     {
         const dispatch = useDispatch();
+        const [emailHasErrors, setEmailHasErrors] = useState(false);
+        useEffect(() => {
+            return () => {
+                setEmailHasErrors(false);
+            };
+        }, []);
         const registredUserEmail = useSelector(
             (state: IStore) => state?.home?.user?.email
-        );
-        const emailHasErrors = useSelector(
-            (state: IStore) => state?.home?.errors?.email
-        );
-        console.log(
-            "🚀 ~ file: index.tsx ~ line 25 ~ emailHasErrors",
-            emailHasErrors
         );
 
         const { handleSubmit, control } = useForm();
@@ -33,17 +31,11 @@ export const Login: React.FunctionComponent<ILogin.IProps> = () =>
             e: React.BaseSyntheticEvent<object, any, any>
         ) => {
             e?.preventDefault();
-            const userIsRegistered = data?.email === registredUserEmail;
-            // console.log(
-            //     "🚀 ~ file: index.tsx ~ line 32 ~ userIsRegistered",
-            //     userIsRegistered
-            // );
+            const userIsRegistered =
+                !!registredUserEmail && data?.email === registredUserEmail;
+
             if (!userIsRegistered) {
-                return dispatch(
-                    HomeActions.SetErrors({
-                        email: true,
-                    })
-                );
+                return setEmailHasErrors(true);
             }
             dispatch(
                 HomeActions.ChangePath({
@@ -83,10 +75,14 @@ export const Login: React.FunctionComponent<ILogin.IProps> = () =>
                                     />
                                 )}
                             />
-                            <Form.Control.Feedback type="invalid" tooltip>
-                                aucun utilisateur enregistré avec cette adresse
-                                e-mail
-                            </Form.Control.Feedback>
+                            {emailHasErrors ? (
+                                <Alert variant="danger" className="mt-2">
+                                    <small>
+                                        Aucun utilisateur enregistré avec cette
+                                        adresse e-mail
+                                    </small>
+                                </Alert>
+                            ) : null}
                         </InputGroup>
                     </Form.Group>
                     <Form.Text id="passwordHelpBlock" className="pb-3">

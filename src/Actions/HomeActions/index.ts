@@ -70,7 +70,6 @@ export const HomeActions = {
     SetErrors: (payload: IHomePage.Actions.ISetErrors) => (
         dispatch: Dispatch
     ) => {
-        // console.log(payload);
         dispatch({
             payload,
             type: ActionConsts.Home.SetErrors,
