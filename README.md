@@ -1,6 +1,10 @@
 
 # Aji Creative News App
 
+## Tech Stack
+
+React, Redux, redux-thunk, Next.js, bootstrap, immer, react-query,react-hook-form, saas, styled-component
+
 ## Screenshots
 
 ### Login page
